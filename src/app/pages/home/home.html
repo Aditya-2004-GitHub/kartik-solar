@@ -343,40 +343,110 @@
 <div class="floating-inquiry glass-panel" id="floatingInquiry" *ngIf="showFloatingInquiry">
   <button type="button" class="btn-close floating-close" aria-label="Close" (click)="closeInquiry($event)"></button>
   <div (click)="openInquiryModal()" style="cursor: pointer;">
-    <h6 class="mb-1 text-primary fw-bold"><i class="fas fa-bolt text-warning me-1"></i> Quick Inquiry</h6>
-    <p class="mb-0 text-muted" style="font-size: 0.8rem;">Click here to get a solar quote</p>
+    <h6 class="mb-1 text-primary fw-bold"><i class="fas fa-bolt text-warning me-1"></i> Become a Partner</h6>
+    <p class="mb-0 text-muted" style="font-size: 0.8rem;">Join our network of solar partners</p>
   </div>
 </div>
 
 <!-- Inquiry Modal -->
 <div class="modal fade" id="inquiryModal" tabindex="-1" aria-labelledby="inquiryModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content glass-panel border-0">
       <div class="modal-header border-bottom-0 bg-primary text-white">
-        <h5 class="modal-title" id="inquiryModalLabel">Get Your Free Quote</h5>
+        <h5 class="modal-title" id="inquiryModalLabel">Become a Partner (Franchise Form)</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body p-4 bg-white text-dark">
-        <form (ngSubmit)="sendToWhatsapp($event)">
-          <div class="mb-3">
-            <label class="form-label fw-bold">Name</label>
-            <input type="text" class="form-control bg-light" id="modalName" required>
+        <form (ngSubmit)="submitFranchiseForm()">
+          <h6 class="fw-bold text-primary mb-3">1. Personal Information</h6>
+          <div class="row g-3 mb-4">
+            <div class="col-md-6">
+              <label class="form-label fw-bold small">Full Name</label>
+              <input type="text" class="form-control bg-light" id="modalName" name="name" [(ngModel)]="franchiseForm.name" required placeholder="Enter your full name">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-bold small">Mobile Number</label>
+              <input type="tel" class="form-control bg-light" id="modalPhone" name="phone" [(ngModel)]="franchiseForm.phone" required placeholder="Enter mobile number">
+            </div>
+            <div class="col-12">
+              <label class="form-label fw-bold small">Email ID</label>
+              <input type="email" class="form-control bg-light" id="modalEmail" name="email" [(ngModel)]="franchiseForm.email" required placeholder="Enter email address">
+            </div>
           </div>
-          <div class="mb-3">
-            <label class="form-label fw-bold">Phone Number</label>
-            <input type="tel" class="form-control bg-light" id="modalPhone" required>
+
+          <h6 class="fw-bold text-primary mb-3">2. Location Information</h6>
+          <div class="row g-3 mb-4">
+            <div class="col-md-6">
+              <label class="form-label fw-bold small">State</label>
+              <input type="text" class="form-control bg-light" id="modalState" name="state" [(ngModel)]="franchiseForm.state" required placeholder="Enter state">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-bold small">City</label>
+              <input type="text" class="form-control bg-light" id="modalCity" name="city" [(ngModel)]="franchiseForm.city" required placeholder="Enter city">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-bold small">Area / Locality</label>
+              <input type="text" class="form-control bg-light" id="modalArea" name="area" [(ngModel)]="franchiseForm.area" required placeholder="Enter area/locality">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-bold small">PIN Code</label>
+              <input type="text" class="form-control bg-light" id="modalPin" name="pin" [(ngModel)]="franchiseForm.pin" required placeholder="Enter PIN code">
+            </div>
           </div>
-          <div class="mb-4">
-            <label class="form-label fw-bold">Requirement</label>
-            <select class="form-select bg-light" id="modalReq" required>
-              <option value="" selected disabled>Select your need</option>
-              <option value="Residential Solar">Residential Solar</option>
-              <option value="Commercial Solar">Commercial Solar</option>
-              <option value="MSEDCL Service">MSEDCL Service</option>
-              <option value="Other">Other</option>
-            </select>
+
+          <h6 class="fw-bold text-primary mb-3">3. Business / Experience Information</h6>
+          <div class="row g-3 mb-4">
+            <div class="col-md-4">
+              <label class="form-label fw-bold small">Have Business Experience?</label>
+              <select class="form-select bg-light" id="modalBusExp" name="busExp" [(ngModel)]="franchiseForm.busExp" required>
+                <option value="" selected disabled>Select</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label fw-bold small">Current Business Name</label>
+              <input type="text" class="form-control bg-light" id="modalBusName" name="busName" [(ngModel)]="franchiseForm.busName" placeholder="If any">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label fw-bold small">Years of Experience</label>
+              <input type="number" class="form-control bg-light" id="modalBusYears" name="busYears" [(ngModel)]="franchiseForm.busYears" placeholder="e.g. 5">
+            </div>
           </div>
-          <button type="submit" class="btn btn-primary w-100 fw-bold py-2 custom-bounce">Send via WhatsApp</button>
+
+          <h6 class="fw-bold text-primary mb-3">4. Investment Capacity</h6>
+          <div class="row g-3 mb-4">
+            <div class="col-12">
+              <label class="form-label fw-bold small">How much investment can you make?</label>
+              <input type="text" class="form-control bg-light" id="modalInvestment" name="investment" [(ngModel)]="franchiseForm.investment" required placeholder="e.g. 5 Lakhs">
+            </div>
+          </div>
+
+          <h6 class="fw-bold text-primary mb-3">5. Space / Shop Details</h6>
+          <div class="row g-3 mb-4">
+            <div class="col-md-6">
+              <label class="form-label fw-bold small">Have Office / Shop Space?</label>
+              <select class="form-select bg-light" id="modalSpaceType" name="spaceType" [(ngModel)]="franchiseForm.spaceType" required>
+                <option value="" selected disabled>Select</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-bold small">Shop Size (Sq. Ft.)</label>
+              <input type="number" class="form-control bg-light" id="modalSpaceSize" name="spaceSize" [(ngModel)]="franchiseForm.spaceSize" placeholder="e.g. 200">
+            </div>
+          </div>
+
+          <h6 class="fw-bold text-primary mb-3">6. Interest Level</h6>
+          <div class="row g-3 mb-4">
+            <div class="col-12">
+              <label class="form-label fw-bold small">Why do you want to take this franchise?</label>
+              <textarea class="form-control bg-light" id="modalInterestReason" name="interestReason" [(ngModel)]="franchiseForm.interestReason" rows="2" required placeholder="Short message"></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100 fw-bold py-2 custom-bounce mt-2">Submit Application via WhatsApp</button>
         </form>
       </div>
     </div>

@@ -1,12 +1,13 @@
 import { AfterViewInit, Component, ElementRef, HostListener, inject, NgZone, OnDestroy, ViewChild, ViewEncapsulation, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser, CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, FormsModule],
   templateUrl: './home.html',
   styleUrl: './home.css',
   encapsulation: ViewEncapsulation.None
@@ -16,6 +17,25 @@ export class Home implements AfterViewInit {
   private time = 0;
 
   private platformId = inject(PLATFORM_ID);
+
+  showFloatingInquiry = true;
+
+  franchiseForm = {
+    name: '',
+    phone: '',
+    email: '',
+    state: '',
+    city: '',
+    area: '',
+    pin: '',
+    busExp: '',
+    busName: '',
+    busYears: '',
+    investment: '',
+    spaceType: '',
+    spaceSize: '',
+    interestReason: ''
+  };
 
   constructor(private ngZone: NgZone) { }
 
@@ -54,8 +74,6 @@ export class Home implements AfterViewInit {
     });
   }
 
-  showFloatingInquiry = true;
-
   closeInquiry(event: Event) {
     event.stopPropagation();
     this.showFloatingInquiry = false;
@@ -71,16 +89,35 @@ export class Home implements AfterViewInit {
     }
   }
 
-  sendToWhatsapp(event: Event) {
-    event.preventDefault();
+  submitFranchiseForm() {
     if (isPlatformBrowser(this.platformId)) {
-      const name = (document.getElementById('modalName') as HTMLInputElement).value;
-      const phone = (document.getElementById('modalPhone') as HTMLInputElement).value;
-      const req = (document.getElementById('modalReq') as HTMLSelectElement).value;
+      const { name, phone, email, state, city, area, pin, busExp, busName, busYears, investment, spaceType, spaceSize, interestReason } = this.franchiseForm;
 
-      const text = `*New Solar Inquiry*%0A%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Requirement:* ${req}`;
+      const fBusName = busName || 'N/A';
+      const fBusYears = busYears || 'N/A';
+      const fSpaceSize = spaceSize || 'N/A';
+
+      const text = `*New Franchise Application*%0A%0A*Personal Information*%0A*Name:* ${name}%0A*Mobile Number:* ${phone}%0A*Email ID:* ${email}%0A%0A*Location Information*%0A*State:* ${state}%0A*City:* ${city}%0A*Area / Locality:* ${area}%0A*PIN Code:* ${pin}%0A%0A*Business / Experience*%0A*Have Experience:* ${busExp}%0A*Business Name:* ${fBusName}%0A*Years:* ${fBusYears}%0A%0A*Investment Capacity*%0A*Amount:* ${investment}%0A%0A*Space / Shop Details*%0A*Have Space:* ${spaceType}%0A*Size (Sq Ft):* ${fSpaceSize}%0A%0A*Interest Level*%0A*Reason:* ${interestReason}`;
       window.open(`https://wa.me/919890750747?text=${text}`, '_blank');
-      
+
+      // clear all form data as user submitted the form
+      this.franchiseForm = {
+        name: '',
+        phone: '',
+        email: '',
+        state: '',
+        city: '',
+        area: '',
+        pin: '',
+        busExp: '',
+        busName: '',
+        busYears: '',
+        investment: '',
+        spaceType: '',
+        spaceSize: '',
+        interestReason: ''
+      };
+
       const modalEl = document.getElementById('inquiryModal');
       if (modalEl && (window as any).bootstrap) {
           const modalInstance = (window as any).bootstrap.Modal.getInstance(modalEl);
