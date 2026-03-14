@@ -1,0 +1,104 @@
+<!-- Subpage Hero Section -->
+    <header class="hero-section hero-section-sub" id="home">
+        <div class="video-container">
+            <video autoplay loop muted playsinline class="hero-video">
+                <source src="259949_medium.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+
+        <div
+            class="container hero-content h-100 d-flex flex-column justify-content-center align-items-center text-center text-white position-relative">
+            <div class="badge-custom my-3 gsap-reveal">Get In Touch</div>
+            <h1 class="display-3 fw-bolder mb-3 gsap-reveal text-shadow">Contact <span class="text-highlight">Our Team</span></h1>
+            <p class="lead mb-4 gsap-reveal px-md-5 max-w-text text-light-shadow"><span class="fw-bold">Connect with our solar experts for guidance, project inquiries, or a free consultation. We’re here to help you find the best solar solution for your home or business.</span></p>
+        </div>
+    </header>
+
+<main class="pt-5 my-3 mx-3 mx-md-3">
+    <div class="container section-padding">
+
+        <div class="row align-items-center  pb-5">
+            <!-- Form -->
+            <div class="col-lg-7 mb-5 mb-lg-0 pe-lg-5 gsap-fade-right">
+                <div class="glass-card p-lg-5 p-3 border-0 rounded-4 shadow-sm">
+                    <h3 class="fw-bold mb-4 dark-text">Request Quote</h3>
+                    <form (submit)="sendToWhatsapp($event)">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold text-muted small">Name</label>
+                                <input type="text" class="form-control bg-light border-0 py-3 rounded-3" id="contactName" required placeholder="John Doe">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold text-muted small">Phone Number</label>
+                                <input type="tel" class="form-control bg-light border-0 py-3 rounded-3" id="contactPhone" required placeholder="+91 00000 00000">
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label fw-bold text-muted small">Email Address</label>
+                                <input type="email" class="form-control bg-light border-0 py-3 rounded-3" id="contactEmail" required placeholder="john@example.com">
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label fw-bold text-muted small">Requirement Type</label>
+                                <select class="form-select bg-light border-0 py-3 rounded-3" id="contactReq" required>
+                                    <option value="" selected disabled>Select your need</option>
+                                    <option value="Residential Solar">Residential Solar</option>
+                                    <option value="Commercial Solar">Commercial Solar</option>
+                                    <option value="MSEDCL Service">MSEDCL Service</option>
+                                    <option value="Solar Consultation">Solar Consultation</option>
+                                </select>
+                            </div>
+                             <div class="col-md-12">
+                                <label class="form-label fw-bold text-muted small">Message / Location</label>
+                                <textarea class="form-control bg-light border-0 py-3 rounded-3" id="contactMsg" rows="4" placeholder="Enter your query or project location details"></textarea>
+                            </div>
+                            <div class="col-md-12 mt-4">
+                                <button type="submit" class="btn btn-primary w-100 fw-bold py-3 rounded-pill shadow-sm">
+                                    <i class="fas fa-paper-plane me-2"></i> Request Quote
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="col-lg-5 gsap-fade-left">
+                <div class="dark-theme-section p-5 rounded-4 about-glass-card shadow-lg text-white mb-4">
+                    <h3 class="fw-bold text-muted mb-4 border-bottom border-light pb-3">Contact Info</h3>
+                    <ul class="list-unstyled list-py-3">
+                         <li class="mb-4 d-flex align-items-start">
+                            <i class="fas fa-building mt-1 me-3 fs-3 text-warning"></i>
+                            <div>
+                                <h6 class="fw-bold mb-1 text-muted">Kartik Multi Solutions</h6>
+                                <p class="mb-0 text-dark">Shop No.7, Pande Layout, Khamla Road, Nagpur</p>
+                            </div>
+                         </li>
+                         <li class="mb-4 d-flex align-items-center">
+                            <i class="fas fa-phone-alt me-3 fs-3 text-primary"></i>
+                            <div>
+                                <h6 class="fw-bold mb-1 text-muted">Phone</h6>
+                                <p class="mb-0 text-dark"><a href="tel:9890750747" class="text-dark text-decoration-none">9890750747</a></p>
+                            </div>
+                         </li>
+                         <li class="d-flex align-items-center">
+                            <i class="fas fa-envelope me-3 fs-3 text-danger"></i>
+                            <div>
+                                <h6 class="fw-bold mb-1 text-muted">Email</h6>
+                                <p class="mb-0 text-dark"><a href="mailto:kartik19computer@gmail.com" class="text-dark text-decoration-none">kartik19computer@gmail.com</a></p>
+                            </div>
+                         </li>
+                    </ul>
+                </div>
+
+                <div class="glass-card p-4 rounded-4 shadow-sm text-center">
+                    <h5 class="fw-bold dark-text mb-3">Quick Chat</h5>
+                    <p class="text-muted small mb-4">Click to instantaneously connect with our solar advisors directly through WhatsApp.</p>
+                    <button class="btn btn-success rounded-pill fw-bold py-3 px-4 shadow w-100" (click)="quickWhatsapp()">
+                        <i class="fab fa-whatsapp fs-5 me-2 align-middle"></i> Chat on WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>

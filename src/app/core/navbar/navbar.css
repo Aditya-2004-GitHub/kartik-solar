@@ -1,0 +1,118 @@
+.custom-navbar {
+  transition: var(--transition);
+  padding: 1.5rem 0;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: transparent;
+}
+
+.custom-navbar.scrolled {
+  padding: 0.8rem 0;
+    background: rgba(15, 23, 42, 0.95); /* Part of 20% dark theme */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.logo-img {
+  height: 50px;
+    width: auto;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+
+.custom-navbar.scrolled .logo-img {
+    background: white;
+    padding: 4px;
+}
+
+.brand-text {
+    font-size: 1.25rem;
+    color: white;
+    transition: var(--transition);
+}
+
+.custom-navbar:not(.scrolled) .brand-text {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.custom-navbar.scrolled .brand-text {
+    color: white;
+}
+
+.nav-hover {
+    color: rgba(255,255,255,0.8) !important;
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 1rem !important;
+    margin: 0 0.25rem;
+    transition: var(--transition);
+}
+
+.custom-navbar.scrolled .nav-hover {
+    color: rgba(255,255,255,0.7) !important;
+}
+
+.nav-hover:hover, .nav-hover.active {
+    color: var(--accent) !important;
+}
+
+.nav-hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: var(--transition);
+}
+
+.nav-hover:hover::after, .nav-hover.active::after {
+    width: 70%;
+}
+
+.toggle-icon {
+    color: white;
+    font-size: 1.5rem;
+}
+
+
+@media (max-width: 991.98px) {
+  .custom-navbar {
+    background: rgba(15, 23, 42, 0.95) !important;
+    padding: 0.8rem 0;
+  }
+
+  .nav-hover {
+    color: rgba(255, 255, 255, 0.8) !important;
+    padding: 0.75rem 0 !important;
+  }
+
+  .display-3 {
+    font-size: 2.5rem;
+  }
+
+  .experience-badge {
+    right: 10px;
+    width: 100px;
+    height: 100px;
+    padding: 1rem;
+  }
+
+  .experience-badge h3 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .nav-hover {
+    display: inline-block;
+    width: max-content;
+  }
+
+  .nav-hover::after {
+    left: 0;
+    transform: none;
+  }
+}

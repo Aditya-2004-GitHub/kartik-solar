@@ -1,0 +1,160 @@
+<!-- Subpage Hero Section -->
+<header class="hero-section hero-section-sub" id="home">
+  <div class="video-container">
+    <video autoplay loop muted playsinline class="hero-video">
+      <source src="259949_medium.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+  </div>
+
+  <div
+    class="container hero-content h-100 d-flex flex-column justify-content-center align-items-center text-center text-white position-relative">
+    <div class="badge-custom my-3 gsap-reveal">Featured Projects</div>
+    <h1 class="display-3 fw-bolder mb-3 gsap-reveal text-shadow">Project <span class="text-highlight">Gallery</span>
+    </h1>
+    <p class="lead mb-4 gsap-reveal px-md-5 max-w-text text-light-shadow"><span class="fw-bold">Explore our completed solar projects that showcase quality engineering, efficient installation, and reliable performance. Each project reflects our commitment to delivering sustainable energy solutions for homes, businesses, and industries.</span></p>
+  </div>
+</header>
+
+<main class="pt-5 mt-5 mb-5 mx-3 mx-md-5">
+  <div class="container section-padding">
+
+    <!-- Filters (Placeholder for aesthetic) -->
+    <!-- <div class="d-flex justify-content-center gap-2 mb-5 flex-wrap gsap-fade-up">
+            <button class="btn btn-primary px-4 rounded-pill shadow-sm py-2">All Projects</button>
+            <button class="btn btn-outline-secondary px-4 rounded-pill shadow-sm py-2 border-0 bg-white">Residential</button>
+            <button class="btn btn-outline-secondary px-4 rounded-pill shadow-sm py-2 border-0 bg-white">Commercial</button>
+            <button class="btn btn-outline-secondary px-4 rounded-pill shadow-sm py-2 border-0 bg-white">MSEDCL Work</button>
+        </div> -->
+
+    <!-- Project Grid -->
+    <!-- <div class="row g-4 mb-5 pb-5">
+
+            <div class="col-lg-4 col-md-6 gsap-fade-up">
+                <div class="glass-card overflow-hidden h-100 border-0 rounded-4 shadow-sm position-relative">
+                    <img src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Residential Solar" class="img-fluid w-100" style="object-fit: cover; height: 250px;">
+                    <span class="badge bg-warning text-dark position-absolute top-0 end-0 m-3 px-3 py-2 rounded-pill fw-bold">15 kW</span>
+                    <div class="p-4 bg-white">
+                        <h5 class="fw-bold mb-1 dark-text">Greenwood Society Installation</h5>
+                        <p class="text-muted small mb-2"><i class="fas fa-map-marker-alt text-danger me-2"></i> Nagpur South</p>
+                        <p class="text-muted small mb-0">Residential Rooftop Solar</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-4 col-md-6 gsap-fade-up">
+                <div class="glass-card overflow-hidden h-100 border-0 rounded-4 shadow-sm position-relative">
+                    <img src="https://i0.wp.com/electrek.co/wp-content/uploads/sites/3/2023/03/sumitomo-rayong-factory-solar.jpg?w=1500&quality=82&strip=all&ssl=1" alt="Commercial Solar" class="img-fluid w-100" style="object-fit: cover; height: 250px;">
+                    <span class="badge bg-primary position-absolute top-0 end-0 m-3 px-3 py-2 rounded-pill fw-bold">150 kW</span>
+                    <div class="p-4 bg-white">
+                        <h5 class="fw-bold mb-1 dark-text">MIDC Factory Array</h5>
+                        <p class="text-muted small mb-2"><i class="fas fa-map-marker-alt text-danger me-2"></i> Hingna, Nagpur</p>
+                        <p class="text-muted small mb-0">Commercial Solar Projects</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-4 col-md-6 gsap-fade-up">
+                <div class="glass-card overflow-hidden h-100 border-0 rounded-4 shadow-sm position-relative">
+                    <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="MSEDCL Service" class="img-fluid w-100" style="object-fit: cover; height: 250px;">
+                    <span class="badge bg-success position-absolute top-0 end-0 m-3 px-3 py-2 rounded-pill fw-bold">Grid Sync</span>
+                    <div class="p-4 bg-white">
+                        <h5 class="fw-bold mb-1 dark-text">City Complex Net-Metering</h5>
+                        <p class="text-muted small mb-2"><i class="fas fa-map-marker-alt text-danger me-2"></i> Wardha Road</p>
+                        <p class="text-muted small mb-0">Electrical & MSEDCL Service Work</p>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="pt-5 mt-5 position-relative">
+      <div class="text-center mb-5 gsap-reveal">
+        <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold mb-3 shadow-sm">Client Success
+          Stories</span>
+        <h2 class="display-5 fw-bolder dark-text">What Our Clients Say</h2>
+        <div class="mx-auto mt-3"
+          style="width: 60px; height: 4px; background: linear-gradient(90deg, #ffc107, transparent); border-radius: 2px;">
+        </div>
+      </div>
+
+      <div class="row justify-content-center px-3 px-md-0 pb-5">
+        <div class="col-lg-10 col-xl-8 position-relative">
+          <div id="testimonialCarousel" class="carousel slide testimonial-carousel" data-bs-ride="carousel">
+            <div class="carousel-inner pt-2 pb-4 px-2">
+              @for (testimonial of testimonials; track testimonial.id; let i = $index) {
+              <div class="carousel-item" [class.active]="i === 0">
+                <div class="modern-testimonial-card shadow-lg rounded-4 border-0 position-relative mx-auto bg-white"
+                  style="max-width: 700px; transition: transform 0.3s ease;">
+                  <!-- Image Section -->
+                  <div class="image-wrapper position-relative rounded-top-4 overflow-hidden" style="height: 380px;">
+                    <img [src]="testimonial.image" [alt]="testimonial.name" class="w-100 h-100"
+                      style="object-fit: cover; object-position: center;">
+                    <div class="overlay-gradient position-absolute bottom-0 w-100 h-50"
+                      style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);"></div>
+                  </div>
+
+                  <!-- Floating Review Content -->
+                  <div
+                    class="content-wrapper position-relative z-2 px-4 px-md-5 mx-0 mx-md-4 bg-white shadow-lg rounded-4"
+                    style="margin-top: -80px; padding-top: 35px; padding-bottom: 35px;">
+                    <div
+                      class="quote-icon position-absolute d-flex align-items-center justify-content-center bg-warning text-dark rounded-circle shadow"
+                      style="top: -25px; left: 40px; width: 50px; height: 50px; font-size: 1.2rem;">
+                      <i class="fas fa-quote-left"></i>
+                    </div>
+
+                    <p class="fs-5 text-dark fst-italic mb-4" style="line-height: 1.7;">
+                      "{{testimonial.review}}"
+                    </p>
+
+                    <div class="d-flex align-items-center justify-content-between mt-4">
+                      <div>
+                        <h5 class="fw-bold mb-1 text-dark">{{testimonial.name}}</h5>
+                        <span class="text-muted small fw-semibold"><i
+                            class="fas fa-map-marker-alt text-danger me-1"></i> {{testimonial.location}}</span>
+                      </div>
+                      <div class="text-warning fs-6">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                          class="fas fa-star"></i><i class="fas fa-star"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              }
+            </div>
+
+            <!-- Custom Modern Navigation Controls -->
+            <div class="d-none d-lg-block position-absolute w-100 h-100 top-0 start-0 pointer-events-none">
+              <button class="carousel-control-prev custom-nav-btn shadow pointer-events-auto" type="button"
+                data-bs-target="#testimonialCarousel" data-bs-slide="prev"
+                style="left: -60px; top: 50%; transform: translateY(-50%);">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="carousel-control-next custom-nav-btn shadow pointer-events-auto" type="button"
+                data-bs-target="#testimonialCarousel" data-bs-slide="next"
+                style="right: -60px; top: 50%; transform: translateY(-50%);">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
+            <!-- Mobile Navigation Controls -->
+            <div class="d-flex d-lg-none justify-content-center gap-3 mt-4">
+              <button class="custom-nav-btn shadow position-static" type="button" data-bs-target="#testimonialCarousel"
+                data-bs-slide="prev">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="custom-nav-btn shadow position-static" type="button" data-bs-target="#testimonialCarousel"
+                data-bs-slide="next">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
