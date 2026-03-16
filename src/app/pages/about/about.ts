@@ -14,20 +14,41 @@ export class About implements AfterViewInit {
 
   @ViewChild('heroVideo') heroVideo!: ElementRef<HTMLVideoElement>;
 
-  constructor(private ngZone: NgZone) {}
+  constructor(private ngZone: NgZone) { }
 
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-      if (this.heroVideo && this.heroVideo.nativeElement) {
-        this.heroVideo.nativeElement.muted = true;
-        this.heroVideo.nativeElement.defaultMuted = true;
-        this.heroVideo.nativeElement.play().catch(e => console.log('Auto-play prevented', e));
+      // if (this.heroVideo && this.heroVideo.nativeElement) {
+      //   this.heroVideo.nativeElement.muted = true;
+      //   this.heroVideo.nativeElement.defaultMuted = true;
+      //   this.heroVideo.nativeElement.play().catch(e => console.log('Auto-play prevented', e));
+      // }
+
+      const video = this.heroVideo?.nativeElement;
+
+      if (video) {
+        video.muted = true;
+        video.defaultMuted = true;
+
+        const playVideo = () => {
+          video.play().catch(() => { });
+        };
+
+        if (document.visibilityState === 'visible') {
+          playVideo();
+        }
+
+        document.addEventListener('visibilitychange', () => {
+          if (document.visibilityState === 'visible') {
+            playVideo();
+          }
+        });
       }
       this.ngZone.runOutsideAngular(() => {
         gsap.registerPlugin(ScrollTrigger);
 
         setTimeout(() => {
-            ScrollTrigger.refresh();
+          ScrollTrigger.refresh();
         }, 100);
 
         gsap.utils.toArray('.gsap-reveal').forEach((element: any) => {
