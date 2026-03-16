@@ -48,6 +48,7 @@ export class Home implements AfterViewInit {
       // Force video playback to handle browser autoplay policies
       if (this.heroVideo && this.heroVideo.nativeElement) {
         this.heroVideo.nativeElement.muted = true;
+        this.heroVideo.nativeElement.defaultMuted = true;
         this.heroVideo.nativeElement.play().catch(error => {
           console.log("Video auto-play prevented by browser policy", error);
         });

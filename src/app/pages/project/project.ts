@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, PLATFORM_ID, inject, NgZone } from '@angular/core';
+import { Component, AfterViewInit, PLATFORM_ID, inject, NgZone, ViewChild, ElementRef } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -85,10 +85,17 @@ export class Project implements AfterViewInit {
     }
   ];
 
+  @ViewChild('heroVideo') heroVideo!: ElementRef<HTMLVideoElement>;
+
   constructor(private ngZone: NgZone) {}
 
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
+      if (this.heroVideo && this.heroVideo.nativeElement) {
+        this.heroVideo.nativeElement.muted = true;
+        this.heroVideo.nativeElement.defaultMuted = true;
+        this.heroVideo.nativeElement.play().catch(e => console.log('Auto-play prevented', e));
+      }
       this.ngZone.runOutsideAngular(() => {
         gsap.registerPlugin(ScrollTrigger);
 
