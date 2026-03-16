@@ -44,7 +44,7 @@ export class Home implements AfterViewInit {
   ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {
       this.initGSAP();
-      
+
       // Force video playback to handle browser autoplay policies
       if (this.heroVideo && this.heroVideo.nativeElement) {
         this.heroVideo.nativeElement.muted = true;
@@ -61,7 +61,7 @@ export class Home implements AfterViewInit {
 
     // Refresh ScrollTriggers on view init for SPA router changes
     setTimeout(() => {
-        ScrollTrigger.refresh();
+      ScrollTrigger.refresh();
     }, 100);
 
     gsap.utils.toArray('.gsap-reveal').forEach((element: any) => {
@@ -92,11 +92,11 @@ export class Home implements AfterViewInit {
 
   openInquiryModal() {
     if (isPlatformBrowser(this.platformId)) {
-       const modalEl = document.getElementById('inquiryModal');
-       if (modalEl && (window as any).bootstrap) {
-          const modal = new (window as any).bootstrap.Modal(modalEl);
-          modal.show();
-       }
+      const modalEl = document.getElementById('inquiryModal');
+      if (modalEl && (window as any).bootstrap) {
+        const modal = new (window as any).bootstrap.Modal(modalEl);
+        modal.show();
+      }
     }
   }
 
@@ -131,10 +131,10 @@ export class Home implements AfterViewInit {
 
       const modalEl = document.getElementById('inquiryModal');
       if (modalEl && (window as any).bootstrap) {
-          const modalInstance = (window as any).bootstrap.Modal.getInstance(modalEl);
-          if (modalInstance) {
-              modalInstance.hide();
-          }
+        const modalInstance = (window as any).bootstrap.Modal.getInstance(modalEl);
+        if (modalInstance) {
+          modalInstance.hide();
+        }
       }
     }
   }
