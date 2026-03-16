@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, inject, NgZone, PLATFORM_ID, ViewChild, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { filter } from 'rxjs/operators';
 import { Navbar } from "./core/navbar/navbar";
 import { Footer } from "./core/footer/footer";
 import gsap from 'gsap';
@@ -19,7 +20,19 @@ export class App implements AfterViewInit {
   private time = 0;
   private platformId = inject(PLATFORM_ID);
 
-  constructor(private ngZone: NgZone) { }
+  showHeaderFooter = true;
+
+  constructor(private ngZone: NgZone, private router: Router, private activatedRoute: ActivatedRoute) {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      let route = this.activatedRoute;
+      while (route.firstChild) {
+        route = route.firstChild;
+      }
+      this.showHeaderFooter = route.snapshot.data['hideHeaderFooter'] !== true;
+    });
+  }
 
   ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {

@@ -1,7 +1,11 @@
 <div class="light-theme app-container">
-  <app-navbar></app-navbar>
+  @if(showHeaderFooter) {
+    <app-navbar></app-navbar>
+  }
   <!-- Global ThreeJS Canvas -->
   <div id="canvas-container" #appCanvasContainer></div>
   <router-outlet></router-outlet>
-  <app-footer></app-footer>
+  @if(showHeaderFooter) {
+    <app-footer></app-footer>
+  }
 </div>
