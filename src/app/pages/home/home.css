@@ -1,4 +1,3 @@
-
 /* hero section */
 
 .hero-section {
@@ -8,6 +7,8 @@
   min-height: 600px;
   overflow: hidden;
   background: var(--dark-bg);
+  display: flex;
+  flex-direction: column;
 }
 
 .video-container {
@@ -37,6 +38,48 @@
 
 .hero-content {
   z-index: 10;
+  flex: 1;
+  height: 100%;
+}
+
+.hero-top {
+  padding-top: 130px;
+}
+
+/* Mobile Responsiveness for Hero Section */
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 100vh;
+    height: auto;
+    padding-bottom: 40px;
+  }
+
+  .hero-top {
+    padding-top: 100px;
+  }
+
+  .hero-section h1.display-3 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem !important;
+  }
+
+  .hero-section .lead {
+    font-size: 1.1rem;
+    margin-bottom: 2rem !important;
+    padding: 0 15px !important;
+  }
+
+  .hero-section .btn-lg {
+    padding: 1rem 1.5rem !important;
+    font-size: 1rem;
+    width: 100%;
+  }
+
+  .hero-section .gap-3 {
+    flex-direction: column;
+    width: 100%;
+    padding: 0 15px;
+  }
 }
 
 .text-shadow {
@@ -65,7 +108,7 @@
   font-size: 0.85rem;
 }
 
-.about-glass-card{
+.about-glass-card {
   background: rgba(255, 255, 255, 0.471);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -141,122 +184,156 @@
 
 /* 20% Dark Theme Components */
 .dark-theme-element {
-    background: var(--accent);
-    color: white;
+  background: var(--accent);
+  color: white;
 }
 
 .dark-theme-section {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-    position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .experience-badge {
-    position: absolute;
-    bottom: -20px;
-    right: -20px;
-    padding: 1.5rem;
-    border-radius: 50%;
-    width: 140px;
-    height: 140px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    border: 4px solid white;
-    z-index: 5;
-    animation: float 6s ease-in-out infinite;
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  padding: 1.5rem;
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 4px solid white;
+  z-index: 5;
+  animation: float 6s ease-in-out infinite;
 }
 
 .experience-badge h3 {
-    color: var(--accent);
+  color: var(--accent);
 }
 
 @keyframes float {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0); }
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
 
 /* Decorative Elements */
 .glow-orb {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    filter: blur(60px);
-    z-index: 0;
-    opacity: 0.5;
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  filter: blur(60px);
+  z-index: 0;
+  opacity: 0.5;
 }
 
 .glow-orb.top-left {
-    top: -100px;
-    left: -100px;
-    background: rgba(2, 132, 199, 0.6);
+  top: -100px;
+  left: -100px;
+  background: rgba(2, 132, 199, 0.6);
 }
 
 .glow-orb.bottom-right {
-    bottom: -100px;
-    right: -100px;
-    background: rgba(245, 158, 11, 0.4);
+  bottom: -100px;
+  right: -100px;
+  background: rgba(245, 158, 11, 0.4);
 }
 
 /* Service Cards */
 .icon-box {
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    transition: var(--transition);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  transition: var(--transition);
 }
 
 .custom-hover-effect:hover .icon-box {
-    transform: scale(1.1) rotate(5deg);
+  transform: scale(1.1) rotate(5deg);
 }
 
 .custom-list li {
-    padding: 10px 15px;
-    border-radius: 8px;
-    background: rgba(255,255,255,0.5);
-    border: 1px solid rgba(0,0,0,0.03);
-    transition: var(--transition);
+  padding: 10px 15px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  transition: var(--transition);
 }
 
 .custom-list li:hover {
-    background: white;
-    transform: translateX(5px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  background: white;
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .floating-inquiry {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    width: 250px;
-    padding: 15px;
-    z-index: 999;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    animation: slideInLeft 1s ease forwards;
-    border-left: 4px solid var(--accent);
-    transition: var(--transition);
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 250px;
+  padding: 15px;
+  z-index: 999;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  animation: slideInLeft 1s ease forwards;
+  border-left: 4px solid var(--accent);
+  transition: var(--transition);
 }
+
 .floating-inquiry:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
+
 .floating-close {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    font-size: 0.6rem;
-    z-index: 10;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 0.6rem;
+  z-index: 10;
 }
+
 @keyframes slideInLeft {
-    from { transform: translateX(-150%); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
+  from {
+    transform: translateX(-150%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Mobile Overrides (End of file to ensure cascade) */
+@media (max-width: 768px) {
+  .experience-badge {
+    width: 80px;
+    height: 80px;
+    padding: 0.5rem;
+    bottom: -10px;
+    right: -10px;
+    border-width: 2px;
+  }
+
+  .experience-badge h3 {
+    font-size: 1.2rem;
+  }
 }

@@ -70,4 +70,10 @@ export class Navbar implements AfterViewInit {
       }
     }
   }
+
+  openOfferPopup() {
+    if (isPlatformBrowser(this.platformId)) {
+      window.dispatchEvent(new CustomEvent('openOfferPopup'));
+    }
+  }
 }

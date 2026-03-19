@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, inject, NgZone, PLATFORM_ID, ViewChild, signal } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, NgZone, PLATFORM_ID, ViewChild, signal, OnInit, HostListener } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { RouterOutlet, Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { filter } from 'rxjs/operators';
@@ -14,14 +14,15 @@ import * as THREE from 'three';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App implements AfterViewInit {
+export class App implements AfterViewInit, OnInit {
   protected readonly title = signal('KARTIK-SOLAR');
   @ViewChild('appCanvasContainer', { static: false }) canvasContainer!: ElementRef;
   private time = 0;
   private platformId = inject(PLATFORM_ID);
 
   showHeaderFooter = true;
-
+  isOfferPopupOpen = false;
+  hasPopupShownInitially = false;
   constructor(private ngZone: NgZone, private router: Router, private activatedRoute: ActivatedRoute) {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
@@ -32,6 +33,35 @@ export class App implements AfterViewInit {
       }
       this.showHeaderFooter = route.snapshot.data['hideHeaderFooter'] !== true;
     });
+  }
+
+  ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      setTimeout(() => {
+        if (!this.hasPopupShownInitially) {
+          this.isOfferPopupOpen = true;
+          this.hasPopupShownInitially = true;
+        }
+      }, 3000);
+    }
+  }
+
+  @HostListener('window:openOfferPopup')
+  onExternalOpenOfferPopup() {
+    this.openOfferPopup();
+  }
+
+  openOfferPopup() {
+    this.isOfferPopupOpen = true;
+  }
+
+  closeOfferPopup() {
+    this.isOfferPopupOpen = false;
+  }
+
+  navigateToContact() {
+    this.isOfferPopupOpen = false;
+    this.router.navigate(['/contact']);
   }
 
   ngAfterViewInit() {

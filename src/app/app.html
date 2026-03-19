@@ -8,4 +8,30 @@
   @if(showHeaderFooter) {
     <app-footer></app-footer>
   }
+
+  <!-- Offer Popup -->
+  @if(isOfferPopupOpen) {
+    <div class="offer-popup-overlay">
+      <div class="offer-popup" (click)="$event.stopPropagation()">
+        <button class="close-btn" (click)="closeOfferPopup()">&times;</button>
+        <h2>Go Solar and Save More</h2>
+        <h3>Get a 3.3 KW Rooftop Solar System for just ₹65,600</h3>
+
+        <div class="highlight-box">
+          <p><strong>Save ₹26,400 instantly</strong></p>
+          <p class="kartiki-offer">Plus, enjoy a chance to receive Kartiki Oil benefits worth up to ₹20,000</p>
+        </div>
+
+        <p class="tnc">Limited Period Offer | Terms & Conditions Apply</p>
+
+        <div class="btn-container">
+          <button class="btn-quote" (click)="navigateToContact()">Get Free Quote</button>
+          <span class="or-divider">or</span>
+          <button class="btn-book" (click)="navigateToContact()">Book Now</button>
+          <span class="or-divider">or</span>
+          <button class="btn-contact" (click)="navigateToContact()">Contact Us Today</button>
+        </div>
+      </div>
+    </div>
+  }
 </div>

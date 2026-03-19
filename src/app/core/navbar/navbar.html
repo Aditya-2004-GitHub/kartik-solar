@@ -1,5 +1,11 @@
-<nav class="navbar navbar-expand-lg fixed-top custom-navbar" id="navbar">
-  <div class="container">
+<nav class="navbar navbar-expand-lg fixed-top custom-navbar flex-column p-0" id="navbar">
+  <!-- Running Banner inside Navbar -->
+  <div class="running-banner w-100" (click)="openOfferPopup()">
+    <div class="running-banner-text">
+      Go Solar and Save More | Get a 3.3 KW Rooftop Solar System for just ₹65,600 | Save ₹26,400 instantly | Limited Period Offer
+    </div>
+  </div>
+  <div class="container py-2 pt-lg-3 pb-lg-3">
 
     <a class="navbar-brand d-flex align-items-center" routerLink="/">
       <img src="logo.png" class="logo-img me-2">
